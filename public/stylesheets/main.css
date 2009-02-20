@@ -1,0 +1,7 @@
+ul.fieldset {
+ list-style-type: none;
+}
+
+ul.fieldset li {
+  font-size: 20px;
+}

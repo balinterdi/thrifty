@@ -1,0 +1,10 @@
+%form{ :name => "login", :method => "post", :action => "/login" }
+%ul{ :class => "fieldset" }
+  %li{ :class => "field" }
+    %label{ :for => "login" } Login
+    %input{ :type => "text", :id => "login" }
+  %li
+    %label{ :for => "password" } Password
+    %input{ :type => "password", :id => "password" }
+  %li
+    %input{ :type => "submit", :value => "Log in"}
