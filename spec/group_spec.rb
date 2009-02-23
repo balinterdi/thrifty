@@ -12,12 +12,12 @@ describe "Group" do
   it "should not be able to auth. with bad password" do
     Group.authenticate(@group.login, @group.password + "x").should == nil
   end
-  
+
   it "should be able to authenticate with the correct credentials" do
     Group.authenticate(@group.login, @group.password).should == @group
   end
-  
+
   it "should retain the logged in group" do
   end
-  
+
 end

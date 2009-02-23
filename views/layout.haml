@@ -7,5 +7,12 @@
     
     / %link{ :rel => "stylesheet", :href => "/stylesheets/main.css", :type => "text/css", :media => "screen" }
   %body
+    #flash
+      - if flash[:ok]
+        .ok= flash[:ok]
+      - if flash[:error]
+        .ok= flash[:error]
     #container
       = yield
+      - reset_flash
+      

@@ -1,0 +1,17 @@
+%form{ :name => "register", :action => "/register", :method => "post" }
+  %ul{ :class => "fieldset" }
+    %li{ :class => "field" }
+      %label{ :for => "name" } Name
+      %input{ :type => "text", :id => "name", :name => "group[name]" }
+    %li{ :class => "field" }
+      %label{ :for => "login" } Login
+      %input{ :type => "text", :id => "login", :name => "group[login]" }
+    %li{ :class => "field" }
+      %label{ :for => "password" } Password
+      %input{ :type => "password", :id => "password", :name => "group[password]" }
+    %li{ :class => "field" }
+      %label{ :for => "re-password" } Re-password
+      %input{ :type => "password", :id => "re-password", :name => "group[re_password]" }
+
+    %li{ :class => "field" }
+      %input{ :type => "submit", :value => "Register"}
