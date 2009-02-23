@@ -1,33 +1,53 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 describe "Sinatra::MyHelpers" do
-  before do
-    class Sinatra::Application
-      include Sinatra::MyHelpers
+
+  describe "messaging through flash" do
+    before do
+      mock_app {
+        set(:sessions => true)        
+        include Sinatra::MyHelpers
+        get '/login' do
+          session[:ok] = "Ok."
+          puts "XXX session: #{session.inspect}"
+        end
+        get '/' do
+          puts "XXX session: #{session.inspect}"
+          @ok = session[:ok]
+        end
+      }
     end
+    
+    it "should retain flash messages b/w two consecutive messages" do
+      puts "XXX Sessions? #{@app.sessions}"
+      get '/login'
+      get '/'
+      @ok.should == "Ok."
+    end
+    
   end
-
-  describe "param hash handling" do
-    describe "with no nested attributes" do
-      before do
-        # @params = { "status" => "all right" }
-        # @new_params = convert_with_nested_attributes(@params)
-      end
-
-      it "should not change the params hash" do
-        mock_app {
-          get '/' do
-            @params = { "status" => "all right" }
-            @new_params = convert_with_nested_attributes(@params)
-          end
-        }
-        get '/'
-        @params["status"].should == @new_params["status"]
-      end
+  
+  describe "sessions" do
+    before do
+      mock_app {
+        set(:sessions => true)        
+        include Sinatra::MyHelpers
+        get '/login' do
+          session[:ok] = "Ok."
+        end
+        get '/' do
+          @ok = session[:ok]
+        end
+      }
     end
-
-    it "makes a hash of value params if they have a []" do
-      pending
+    
+    it "should retain things stored in session b/w actions" do
+      get '/login'
+      get '/'
+      @ok.should == "Ok."
     end
+    
   end
+  
+
 end

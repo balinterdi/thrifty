@@ -8,6 +8,7 @@ Sinatra::Application.set(
   :environment => :test,
   :run => false,
   :raise_errors => true,
+  :sessions => true,
   :logging => false
 )
 
@@ -20,6 +21,7 @@ module Sinatra::Test
   # the application.
   def mock_app(base=Sinatra::Base, &block)
     @app = Sinatra.new(base, &block)
+    # @app.set(:sessions => true)
   end
 end
 

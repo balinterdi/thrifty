@@ -27,9 +27,14 @@ helpers do
 
   include Sinatra::MyHelpers
 
+  # NOTE: using this for implementing an after-render callback
+  # It will break if the render method's signature changes
+  # I wanted to use this to reset the flash but render can be called
+  # multiple times for rendering a page so flash elements would only
+  # be available after the first render...
   old_render = instance_method(:render)
   define_method(:render) do |engine, template, options|
-    # puts "XXX Hello"
+    # puts "XXX Rendering with engine: #{engine} template: #{template} options: #{options.inspect}"
     old_render.bind(self).call(engine, template, options)
   end
 
