@@ -47,10 +47,6 @@ helpers do
 
 end
 
-before do
-  # reset_flash
-end
-
 get '/main.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :main
@@ -88,7 +84,7 @@ end
 post '/login' do
   auth = do_auth
   if auth
-    flash[:ok] = "You are logged in."
+    flash[:ok] = "Welcome #{current_group.name}."
     redirect '/events'
   else
     flash[:error] = "Incorrect user name or password. Try again."
@@ -127,7 +123,6 @@ get %r{/events/([\d]+)} do
   # we suppose a numeric id.
   id = params[:captures].first
   @event = Event.get(id)
-
   haml :show_event
 end
 

@@ -7,6 +7,7 @@ class Group
   property :password, String, :min_length => 4
 
   has n, :users
+  has n, :events
 
   def self.current_group=(group)
     session["current_user"] = group.id
