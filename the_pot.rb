@@ -87,7 +87,18 @@ end
 
 post '/login' do
   auth = do_auth
-  redirect '/events' if auth
+  if auth
+    flash[:ok] = "You are logged in."
+    redirect '/events'
+  else
+    flash[:error] = "Incorrect user name or password. Try again."
+    haml :login
+  end
+end
+
+get '/logout' do
+  session.delete("group")
+  flash[:ok] = "You have logged out."
   haml :login
 end
 
