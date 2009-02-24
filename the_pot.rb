@@ -25,10 +25,7 @@ helpers do
 
   include Sinatra::MyHelpers
 
-  # alias_method :old_render, :render
-
   old_render = instance_method(:render)
-
   define_method(:render) do |engine, template, options|
     # puts "XXX Hello"
     old_render.bind(self).call(engine, template, options)
@@ -90,7 +87,7 @@ end
 
 post '/login' do
   auth = do_auth
-  redirect '/secret' if auth
+  redirect '/events' if auth
   haml :login
 end
 
@@ -98,6 +95,34 @@ get '/' do
   haml :dashboard
 end
 
-get '/secret' do
-  haml :new_expense
+get '/events' do
+  # TODO: only list Events
+  # the group is part of
+  @events = Event.all
+  haml :events
+end
+
+get '/events/new' do
+  haml :new_event
+end
+
+post '/events' do
+  event = Event.create(params[:event])
+  flash[:ok] = "The new event has been created."
+  redirect "/events/#{event.id}"
+end
+
+get %r{/events/([\d]+)} do
+  # we suppose a numeric id.
+  id = params[:captures].first
+  @event = Event.get(id)
+
+  haml :show_event
+end
+
+post %r{/events/([\d]+)/expenses} do
+  id = params[:captures].first
+  @event = Event.get(id)
+  @event.expenses.create(params[:expense])
+  redirect "/events/#{id}"
 end

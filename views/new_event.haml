@@ -1,0 +1,7 @@
+%form{ :name => "create_event", :action => "/events", :method => "post" }
+  %ul{ :class => "fieldset" }
+    %li{ :class => "field" }
+      %label{ :for => "name" } Name
+      %input{ :type => "text", :name => "event[name]" }
+    %li{ :class => "field" }
+      %input{ :type => "submit", :value => "Create event" }

@@ -1,0 +1,10 @@
+#event
+  %h1= @event.name
+  %form{ :name => "create_expense", :method => "post", :action => "/events/#{@event.id}/expenses"}
+    %ul#expenses
+      = partial :event_expense, :collection => @event.expenses
+    #add-expense
+      %input{ :type => 'text', :name => 'expense[amount]'}
+      %button{ :type => 'submit', :name => 'add_expense'} Add expense
+
+%a{ :href => "/events" } Go to events
