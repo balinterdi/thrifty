@@ -11,6 +11,8 @@ require "expense"
 require "group"
 require "participant"
 require "pot"
+require "tag"
+require "tagging"
 require "user"
 
 require "my_helpers"

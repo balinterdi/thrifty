@@ -1,15 +1,4 @@
-#FIXME: make the require-s dynamic: all the .rb files in the root directory
-# should be required
-
-require "dm-validations"
-require "dm-core"
-
-require "event"
-require "expense"
-require "group"
-require "participant"
-require "pot"
-require "user"
+require "the_pot"
 
 namespace :db do
   desc "does automigration for test database"
