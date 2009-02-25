@@ -132,3 +132,23 @@ post %r{/events/([\d]+)/expenses} do
   @event.expenses.create(params[:expense])
   redirect "/events/#{id}"
 end
+
+get '/expenses/new' do
+  @expenses = current_user.expenses
+  haml :new_expense
+end
+
+get '/expenses' do
+  @expenses = current_user.expenses
+  haml :expenses
+end
+
+post '/expenses' do
+  if expense = Expense.create(params[:expense].merge(:user => current_user))
+    flash[:ok] = "New expense created."
+    redirect "/expenses/new"
+  else
+    flash[:error] = "Error during expense creation."
+    haml :new_expense
+  end
+end

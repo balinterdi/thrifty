@@ -1,1 +1,9 @@
-%div= current_group
+%h1= "New expense for #{current_user.name}"
+%form{ :name => "create_expense", :method => "post", :action => "/expenses"}
+  %ul#expenses
+    = partial :expense, :collection => @expenses
+  #add-expense
+    %input{ :type => 'text', :name => 'expense[amount]'}
+    %button{ :type => 'submit', :name => 'add_expense'} Add expense
+
+%a{ :href => "/expenses" } Go to expenses

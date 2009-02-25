@@ -5,7 +5,7 @@ class Event
   property :name, String, :null => false
 
   has 1, :pot
-  has n, :expenses
+  has n, :expenses#, :through => :shared_expenses
 
   has n, :participants
   has n, :groups, :through => :participants

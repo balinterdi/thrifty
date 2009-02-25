@@ -1,0 +1,3 @@
+%h1= "Expenses for #{current_user.name}"
+%ul#expenses
+  = partial :expense, :collection => @expenses
