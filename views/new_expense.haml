@@ -11,8 +11,14 @@
 %form{ :name => "create_expense", :method => "post", :action => "/expenses"}
   %ul#expenses
     = partial :expense, :collection => @expenses
-  #add-expense
-    %input{ :type => 'text', :name => 'expense[amount]'}
-    %button{ :type => 'submit', :name => 'add_expense'} Add expense
+  %ul.fieldset
+    %li.field
+      %label{ :for => 'expense-amount' } Amount
+      %input{ :type => 'text', :id => 'expense-amount', :name => 'expense[amount]'}
+    %li.field
+      %label{ :for => 'expense-tags' } Tags
+      %input{ :type => 'text', :id => 'expense-tags', :name => 'expense[tags]'}
+    %li.field
+      %input{ :type => 'submit', :name => 'add_expense', :value => "Add expense" }
 
 %a{ :href => "/expenses" } Go to expenses

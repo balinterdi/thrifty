@@ -13,4 +13,11 @@ class User
     self.first(:login => user, :password => password)
   end
   
+  def sum_expenses_for_tag(tag)
+    expenses.select do |exp|
+      exp.tags.map { |t| t.name }.include?(tag)
+    end.
+      inject(0) { |sum, exp| sum + exp.amount }
+  end
+  
 end

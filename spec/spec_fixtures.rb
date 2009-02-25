@@ -11,3 +11,19 @@ Group.fixture {{
   :login => 'pepe_klan',
   :password => 'tio_pepe'
 }}
+
+Tag.fixture(:food) {{
+  :name => 'food'
+}}
+
+Tag.fixture(:fun) {{
+  :name => 'fun'
+}}
+
+Tag.fixture(:travelling) {{
+  :name => 'travelling'
+}}
+
+Expense.fixture {{
+  :amount => /(\d{2,5})/.gen
+}}

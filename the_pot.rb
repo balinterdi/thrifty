@@ -146,7 +146,8 @@ get '/expenses' do
 end
 
 post '/expenses' do
-  if expense = Expense.create(params[:expense].merge(:user => current_user))
+  # tag_ids = params[:expense][:tags].map { |tag| Tag.first(:name => tag).id }
+  if expense = Expense.create(params[:expense].merge(:user => current_user)
     flash[:ok] = "New expense created."
     redirect "/expenses/new"
   else
