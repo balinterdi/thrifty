@@ -5,21 +5,17 @@ describe "Sinatra::MyHelpers" do
   describe "messaging through flash" do
     before do
       mock_app {
-        set(:sessions => true)        
         include Sinatra::MyHelpers
         get '/login' do
           session[:ok] = "Ok."
-          puts "XXX session: #{session.inspect}"
         end
         get '/' do
-          puts "XXX session: #{session.inspect}"
           @ok = session[:ok]
         end
       }
     end
     
     it "should retain flash messages b/w two consecutive messages" do
-      puts "XXX Sessions? #{@app.sessions}"
       get '/login'
       get '/'
       @ok.should == "Ok."
@@ -30,20 +26,16 @@ describe "Sinatra::MyHelpers" do
   describe "sessions" do
     before do
       mock_app {
-        set(:sessions => true)        
-        include Sinatra::MyHelpers
-        get '/login' do
-          session[:ok] = "Ok."
-        end
         get '/' do
           @ok = session[:ok]
+          session[:ok]
         end
       }
     end
     
     it "should retain things stored in session b/w actions" do
-      get '/login'
-      get '/'
+      get '/', :env => { 'rack.session' => { :ok => 'Ok.' } }
+      body.should == 'Ok.'
       @ok.should == "Ok."
     end
     
