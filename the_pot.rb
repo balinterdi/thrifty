@@ -32,17 +32,17 @@ helpers do
   end
 
   def do_auth
-    group = Group.authenticate(params[:login], params[:password])
-    self.current_group = group
-    return group
+    user = User.authenticate(params[:login], params[:password])
+    self.current_user = user
+    return user
   end
 
-  def current_group=(group)
-    session["group"] = group.id
+  def current_user=(user)
+    session["user"] = user.id
   end
 
-  def current_group
-    Group.get(session["group"])
+  def current_user
+    User.get(session["user"])
   end
 
 end
@@ -57,18 +57,18 @@ get '/register' do
 end
 
 post '/register' do
-  if params[:group][:password] != params[:group][:re_password]
+  if params[:user][:password] != params[:user][:re_password]
     flash[:error] = "The passwords do not match."
     haml :register
   else
-    # NOTE: params[:group].delete(:re_password) will not work!
+    # NOTE: params[:user].delete(:re_password) will not work!
     # probably that's because :re_password is not found as key
     # when looking for the value to delete so it does not do anything.
-    params[:group].delete("re_password")
-    group = Group.create(params[:group])
-    if group
-      current_group = group
-      flash[:ok] = "The new group has been created."
+    params[:user].delete("re_password")
+    user = User.create(params[:user])
+    if user
+      current_user = user
+      flash[:ok] = "The new user has been created."
       redirect '/'
     else
       flash[:error] = "Bad data. Registration failed. Try again."
@@ -84,7 +84,7 @@ end
 post '/login' do
   auth = do_auth
   if auth
-    flash[:ok] = "Welcome #{current_group.name}."
+    flash[:ok] = "Welcome #{current_user.name}."
     redirect '/events'
   else
     flash[:error] = "Incorrect user name or password. Try again."
@@ -93,7 +93,7 @@ post '/login' do
 end
 
 get '/logout' do
-  session.delete("group")
+  session.delete("user")
   flash[:ok] = "You have logged out."
   haml :login
 end
@@ -104,7 +104,7 @@ end
 
 get '/events' do
   # TODO: only list Events
-  # the group is part of
+  # the user is part of
   @events = Event.all
   haml :events
 end

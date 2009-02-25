@@ -10,5 +10,5 @@ class Event
   has n, :participants
   has n, :groups, :through => :participants
 
-  belongs_to :manager, :class_name => "Group", :child_key => [:manager_id]
+  belongs_to :manager, :class_name => "User", :child_key => [:manager_id]
 end

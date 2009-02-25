@@ -5,5 +5,5 @@ class Expense
   property :amount, Integer, :null => false
   
   belongs_to :event
-  belongs_to :group
+  belongs_to :user
 end
