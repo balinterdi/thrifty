@@ -152,3 +152,29 @@ post '/expenses' do
     haml :new_expense
   end
 end
+
+get %r{/expenses/(.+)/edit} do
+  id = params[:captures].first
+  @expense = Expense.get(id)
+  haml :edit_expense
+end
+
+put %r{/expenses/(.*)/update} do
+  id = params[:captures].first
+  expense = Expense.get(id)
+  if expense.update_attributes(params[:expense])
+    flash[:ok] = "Expense updated."
+    redirect '/expenses/new'
+  else
+    flash[:error] = "Error updating expense"
+    redirect "/expenses/#{expense.id}/edit"
+  end
+end
+
+delete %r{/expenses/(.*)} do
+  id = params[:captures].first
+  Expense.get(id).destroy
+  # The return value of this method
+  # will be returned to a caller
+  id
+end

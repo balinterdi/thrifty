@@ -1,0 +1,6 @@
+%h1 Edit expense
+
+%form{ :name => "edit_expense", :action => "/expenses/#{@expense.id}/update", :method => "post" }
+  %input{ :type => "hidden", :name => "_method", :value => "put" }
+  %input{ :type => "text", :name => "expense[amount]", :value => @expense.amount }
+  %input{ :type => "submit", :value => "Save" }

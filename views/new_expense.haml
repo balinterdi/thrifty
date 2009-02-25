@@ -1,3 +1,12 @@
+:javascript
+  $(document).ready(function() {
+    $("a.delete").click(function() {
+      $.delete_("/expenses/" + this.id, {}, function(data){
+        $("#"+data).parent().hide();
+      })
+    });
+  })
+
 %h1= "New expense for #{current_user.name}"
 %form{ :name => "create_expense", :method => "post", :action => "/expenses"}
   %ul#expenses

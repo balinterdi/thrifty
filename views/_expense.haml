@@ -1,1 +1,4 @@
-%li.expense= expense.amount
+%li.expense
+  = expense.amount
+  %a{ :href => "/expenses/#{expense.id}/edit" } Edit
+  %a.delete{ :href => "#", :id => expense.id } Delete

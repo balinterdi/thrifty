@@ -4,6 +4,8 @@ class Expense
   property :id, Serial
   property :amount, Integer, :null => false
   
+  # an expense _can_ belong to an event if it is a shared expense
   belongs_to :event
+  # an expense always belongs to a user; the one who paid
   belongs_to :user
 end
