@@ -3,7 +3,6 @@
 ## Short-term
 
 * write specs
-* expenses should be able to be added for a user without an event being necessary
 * sum up all expenses for a user
 * get rid of the Pot model
 * sketch up a nice layout and a form (probably with fieldsets, legend, ul-li)

@@ -55,16 +55,17 @@ module Sinatra::MyHelpers
     def partial(template, *args)
       options = args.last.is_a?(::Hash) ? args.pop : {}
       options.merge!(:layout => false)
+      template_name = "_#{template}".to_sym
       if collection = options.delete(:collection) then
         collection.inject([]) do |buffer, member|
-          buffer << haml("_#{template}".to_sym, options.merge(
+          buffer << haml(template_name, options.merge(
                                     :layout => false,
                                     :locals => {template.to_sym => member} # :todo = <Todo:3e345>
                                   )
                        )
         end.join("\n")
       else
-        haml(template, options)
+        haml(template_name, options)
       end
     end
   end
