@@ -54,6 +54,10 @@ helpers do
 
 end
 
+before do
+  @flash = reset_flash
+end
+
 get '/main.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :main

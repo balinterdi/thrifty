@@ -12,10 +12,10 @@ module Sinatra::MyHelpers
   module Flash
 
     def flash
-      if !session.key?("flash")
-        session["flash"] = Hash.new
+      if !@flash
+        @flash = (session["flash"] = Hash.new)
       end
-      session["flash"]
+      @flash
     end
 
     def reset_flash

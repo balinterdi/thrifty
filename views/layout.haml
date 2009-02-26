@@ -13,8 +13,7 @@
       - if flash[:ok]
         .ok= flash[:ok]
       - if flash[:error]
-        .ok= flash[:error]
+        .error= flash[:error]
     #container
       = yield
-      - reset_flash
 
