@@ -27,7 +27,6 @@ describe "Sinatra::MyHelpers" do
     before do
       mock_app {
         get '/' do
-          @ok = session[:ok]
           session[:ok]
         end
       }
@@ -36,7 +35,6 @@ describe "Sinatra::MyHelpers" do
     it "should retain things stored in session b/w actions" do
       get '/', :env => { 'rack.session' => { :ok => 'Ok.' } }
       body.should == 'Ok.'
-      @ok.should == "Ok."
     end
     
   end
