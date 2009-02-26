@@ -146,8 +146,10 @@ get '/expenses' do
 end
 
 post '/expenses' do
-  # tag_ids = params[:expense][:tags].map { |tag| Tag.first(:name => tag).id }
-  if expense = Expense.create(params[:expense].merge(:user => current_user))
+  tags = (params[:expense].delete("tags")).split.map { |tag| Tag.first(:name => tag) }
+  expense = Expense.new(params[:expense].merge(:user => current_user))
+  tags.each { |tag| expense.taggings.build(:tag_id => tag.id) }
+  if expense.save
     flash[:ok] = "New expense created."
     redirect "/expenses/new"
   else
