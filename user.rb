@@ -22,10 +22,9 @@ class User
 
   def get_expenses_with_tags(tags)
     # this should be elegant like this, but it does not work
-    kiadasok = expenses.select do |exp|
+    expenses.select do |exp|
       exp.tagged_with?(*tags)
     end
-    kiadasok
   end
 
 end

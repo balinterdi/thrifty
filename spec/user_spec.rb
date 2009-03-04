@@ -63,23 +63,28 @@ describe "User" do
 
     describe "with multiple taggings" do
       before do
-        Tagging.all.destroy!
+        User.all.destroy!
+        Expense.all.destroy!
+        food_tag = Tag.gen(:food)
         travel_tag = Tag.gen(:travelling)
-        exp = @user.expenses.first(:amount => 4)
-        exp.taggings << Tagging.create(:tag => travel_tag, :expense => exp)
-        @user.save
-        # exp_with_amount(4).taggings.create(:tag => travel_tag)
-        @exps = @user.get_expenses_with_tags([tag_with_name("food"), travel_tag])
+        @exp1 = Expense.gen
+        @exp2 = Expense.gen
+        @exp3 = Expense.gen
+        @exp1.taggings.create(:tag => food_tag)
+        @exp2.taggings.create(:tag => travel_tag)
+        
+        user = User.gen
+        user.expenses = [@exp1, @exp2, @exp3]
+        @exps = user.get_expenses_with_tags([food_tag, travel_tag])
       end
 
       it "should contain the expenses that are tagged with any of the passed tags" do
-        @exps.should include(exp_with_amount(1))
-        @exps.should include(exp_with_amount(4))
+        @exps.should include(@exp1)
+        @exps.should include(@exp2)
       end
 
       it "should not contain the expenses that are not tagged with any of the passed tags" do
-        # @exps = @user.get_expenses_with_tags([tag_with_name("food"), tag_with_name("travelling")])
-        @exps.should_not include(exp_with_amount(6))
+        @exps.should_not include(@exp3)
       end
 
     end # with multiple tagged
