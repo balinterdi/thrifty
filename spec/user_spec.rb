@@ -65,12 +65,14 @@ describe "User" do
       before do
         User.all.destroy!
         Expense.all.destroy!
+        Tag.all.destroy!
         food_tag = Tag.gen(:food)
         travel_tag = Tag.gen(:travelling)
         @exp1 = Expense.gen
         @exp2 = Expense.gen
         @exp3 = Expense.gen
         @exp1.taggings.create(:tag => food_tag)
+        @exp1.taggings.create(:tag => travel_tag)
         @exp2.taggings.create(:tag => travel_tag)
         
         user = User.gen
@@ -85,6 +87,10 @@ describe "User" do
 
       it "should not contain the expenses that are not tagged with any of the passed tags" do
         @exps.should_not include(@exp3)
+      end
+      
+      it "should not contain an expense that has multiple matching tags" do
+        @exps.length.should == 2
       end
 
     end # with multiple tagged
