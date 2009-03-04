@@ -23,6 +23,8 @@ configure :development do
   DataMapper.setup(:default, :adapter => 'sqlite3', :database => 'db/development.sqlite3')
 end
 
+mime :json, "application/json"
+
 helpers do
 
   include Sinatra::MyHelpers
@@ -151,7 +153,13 @@ end
 
 get '/expenses' do
   @expenses = current_user.expenses
+  @tags = @expenses.map { |exp| exp.tags }.flatten.uniq
   haml :expenses
+end
+
+get '/get_expenses' do
+  content_type :json
+  {:id => 1, :foo => 'bar'}.to_json
 end
 
 post '/expenses' do
