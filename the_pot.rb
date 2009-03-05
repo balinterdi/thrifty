@@ -160,7 +160,9 @@ end
 get '/get_expenses' do
   # content_type :json
   tag_ids = params["tags"].map { |t| t.to_i }
-  partial :expense, :collection => current_user.get_expenses_with_tags(tag_ids);
+  expenses = current_user.get_expenses_with_tags(tag_ids)
+  total_amount = expenses.inject(0) { |sum, exp| sum + exp.amount }
+  total_amount.to_s + ":" + ( partial :expense, :collection => expenses )
 end
 
 post '/expenses' do
