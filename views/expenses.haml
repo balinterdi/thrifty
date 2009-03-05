@@ -2,6 +2,11 @@
   $(document).ready(function() {
     $(".expense_tag").click(function() {
       $(this).toggleClass("selected_tag");
+      var selected_tags = Array();
+      $.each($(".selected_tag"), function() { selected_tags.push($(this).attr("id")); });
+      $.get("/get_expenses", { "tags[]" : $.makeArray(selected_tags) }, function(data) {
+        $("#expenses").html(data);
+      });
     });
   })
 

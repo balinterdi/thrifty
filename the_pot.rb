@@ -23,7 +23,7 @@ configure :development do
   DataMapper.setup(:default, :adapter => 'sqlite3', :database => 'db/development.sqlite3')
 end
 
-mime :json, "application/json"
+# mime :json, "application/json"
 
 helpers do
 
@@ -158,8 +158,9 @@ get '/expenses' do
 end
 
 get '/get_expenses' do
-  content_type :json
-  {:id => 1, :foo => 'bar'}.to_json
+  # content_type :json
+  tag_ids = params["tags"].map { |t| t.to_i }
+  partial :expense, :collection => current_user.get_expenses_with_tags(tag_ids);
 end
 
 post '/expenses' do
