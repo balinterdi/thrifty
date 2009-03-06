@@ -9,11 +9,12 @@
 
     / %link{ :rel => "stylesheet", :href => "/stylesheets/main.css", :type => "text/css", :media => "screen" }
   %body
-    #flash
-      - if flash[:ok]
-        .ok= flash[:ok]
-      - if flash[:error]
-        .error= flash[:error]
     #container
-      = yield
+      #flash
+        - if flash[:ok]
+          .ok= flash[:ok]
+        - if flash[:error]
+          .error= flash[:error]
+      #main_panel
+        = yield
 

@@ -1,11 +1,43 @@
+body
+  :background-color #3d403c
+  :font-family Palatino, Lucida Grande, Verdana, sans-serif
+  :font-size 20px
+
+a
+  :color black
+  :font-weight bold
+  :text-decoration none
+  &:hover
+    :text-decoration underline
+
+ul.fieldset
+  :font-size 1.2em
+
+#main_panel
+  :width 80%
+  :margin 60px auto
+  :padding 50px
+  :color black
+  :background-color #e8ffde
+
 ul.fieldset
   :list-style-type none
+  :font-size 1.2em
   li
     :font-size 20px
 
+ul#expenses
+  :list-style-type none
+
+#tags
+  :margin 10px 0px
+
 div.expense_tag
   :display inline
-  
+  :padding 10px 20px
+  &:hover
+    :background-color #c7d99a
+
 div.selected_tag
-  :background-color blue
+  :background-color #bf6321
   :color white

@@ -1,4 +1,5 @@
 %li.expense
-  = expense.amount
-  %a{ :href => "/expenses/#{expense.id}/edit" } Edit
-  %a.delete{ :href => "#", :id => expense.id } Delete
+  %span.amount= expense.amount
+  %span.links
+    %a{ :href => "/expenses/#{expense.id}/edit" } Edit
+    %a.delete{ :href => "#", :id => expense.id } Delete
