@@ -1,3 +1,4 @@
+/ color-theme based on "Haunt" theme on kuler.adobe.com
 body
   :background-color #3d403c
   :font-family Palatino, Lucida Grande, Verdana, sans-serif
@@ -9,9 +10,6 @@ a
   :text-decoration none
   &:hover
     :text-decoration underline
-
-ul.fieldset
-  :font-size 1.2em
 
 #main_panel
   :width 80%
@@ -26,9 +24,27 @@ ul.fieldset
   li
     :font-size 20px
 
-ul#expenses
+div#expenses
+  :margin 50px 0px
+  / :padding 20px 0px
+  
+ul#expenses-list
   :list-style-type none
-
+  li
+    :clear both
+    :width 200px
+    .amount
+      :display inline
+      :text-align left
+      :float left
+      :width 20%
+      :color red
+    .links
+      :display inline
+      :text-align right
+      :float right
+      :width 80%
+      
 #tags
   :margin 10px 0px
 
@@ -36,7 +52,8 @@ div.expense_tag
   :display inline
   :padding 10px 20px
   &:hover
-    :background-color #c7d99a
+    :color white
+    :background-color #bf6321
 
 div.selected_tag
   :background-color #bf6321
