@@ -1,8 +1,9 @@
 / color-theme based on "Haunt" theme on kuler.adobe.com
 body
   :background-color #3d403c
-  :font-family Palatino, Lucida Grande, Verdana, sans-serif
-  :font-size 20px
+  :font
+    :family Palatino, Lucida Grande, Verdana, sans-serif
+    :size 20px
 
 a
   :color black
@@ -21,40 +22,57 @@ a
 ul.fieldset
   :list-style-type none
   :font-size 1.2em
-  li
-    :font-size 20px
 
 div#expenses
   :margin 50px 0px
   / :padding 20px 0px
-  
+
+=nice-aligned-inline-left
+  :display inline
+  :float left
+  :text-align left
+
+=nice-aligned-inline-right
+  :display inline
+  :float right
+  :text-align right
+
 ul#expenses-list
   :list-style-type none
   li
     :clear both
     :width 200px
     .amount
-      :display inline
-      :text-align left
-      :float left
+      +nice-aligned-inline-left
       :width 20%
       :color red
     .links
-      :display inline
-      :text-align right
-      :float right
+      +nice-aligned-inline-right
       :width 80%
-      
+
+#sum
+  :clear both
+  :width 200px
+  #sum-text
+    +nice-aligned-inline-left
+    :width 80%
+  #sum-amount
+    +nice-aligned-inline-right
+    :width 20%
+
 #tags
   :margin 10px 0px
+
+!tag_background = #bf6321
 
 div.expense_tag
   :display inline
   :padding 10px 20px
   &:hover
     :color white
-    :background-color #bf6321
+    :background-color = !tag_background
+    :cursor pointer
 
 div.selected_tag
-  :background-color #bf6321
+  :background-color = !tag_background
   :color white
