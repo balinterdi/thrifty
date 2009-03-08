@@ -1,4 +1,6 @@
 / color-theme based on "Haunt" theme on kuler.adobe.com
+/ form-layout design taken from http://www.slideshare.net/AaronGustafson/learning-to-love-forms-webvisions-07
+
 body
   :background-color #3d403c
   :font
@@ -21,9 +23,48 @@ a
 
 #main_panel
 
-ul.fieldset
-  :list-style-type none
-  :font-size 1.2em
+label
+  :display block
+  :line-height 1.6
+
+input
+  :background #eee
+  &:focus
+    :background #fff
+
+!left_field_width = 120px
+!right_field_width = 240px
+!form_width = 400px
+
+form
+  :border 0
+  :padding 0
+  :margin 0
+  ul.fieldset
+    :list-style none
+    :font-size 1.2em
+    :line-height 1.5em
+    :margin 0
+    :padding 0
+    li
+      :margin 0 0 .75em
+      :padding 0
+      :clear both
+      :width = !form_width
+      input[type=submit]
+        :cursor pointer
+        :margin-left = !left_field_width + 40
+      .leftColumn
+        :width = !left_field_width
+        :float left
+        :text-align right
+        :margin-right 10px
+      .rightColumn
+        :width = !right_field_width
+        :float right
+        :text-align left
+      .onlyRightColumn
+        :margin-left = !left_field_width + 10
 
 div#expenses
   :margin 50px 0px

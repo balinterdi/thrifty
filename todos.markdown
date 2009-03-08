@@ -2,7 +2,7 @@
 
 ## Short-term
 
-* make bottom link shift more to the bottom
+* make labels on form (e.g new_expense.haml) be aligned with the input fields in their row
 * create timestamp for Expense (maybe as an after_save hook)
 * add the ability of fitering expenses between two dates on expenses page
 
@@ -13,6 +13,7 @@
 
 # DONE
 
+* make bottom link shift more to the bottom
 * make expenses list and total sum refresh after deleting an expense on expenses page
 * fix "delete" links on expenses page
 * populate should use nice user names and logins/passwords

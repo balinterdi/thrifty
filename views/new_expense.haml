@@ -15,17 +15,18 @@
 %form{ :name => "create_expense", :method => "post", :action => "/expenses"}
   %ul.fieldset
     %li.field
-      %label{ :for => 'expense-subject' } Subject
-      %input{ :type => 'text', :id => 'expense-subject', :name => 'expense[subject]'}
+      %label.leftColumn{ :for => 'expense-subject' } Subject
+      %input.rightColumn{ :type => 'text', :id => 'expense-subject', :name => 'expense[subject]'}
     %li.field
-      %label{ :for => 'expense-amount' } Amount
-      %input{ :type => 'text', :id => 'expense-amount', :name => 'expense[amount]'}
+      %label.leftColumn{ :for => 'expense-amount' } Amount
+      %input.rightColumn{ :type => 'text', :id => 'expense-amount', :name => 'expense[amount]'}
     %li.field
-      %label{ :for => 'expense-tags' } Tags
-      %input{ :type => 'text', :id => 'expense-tags', :name => 'expense[tags]'}
-    #tags
-      = partial :tag, :collection => @tags
+      %label.leftColumn{ :for => 'expense-tags' } Tags
+      %input.rightColumn{ :type => 'text', :id => 'expense-tags', :name => 'expense[tags]'}
     %li.field
+      .onlyRightColumn
+        = partial :tag, :collection => @tags
+    %li
       %input{ :type => 'submit', :name => 'add_expense', :value => "Add expense" }
 
 %a{ :href => "/expenses" } Go to expenses
