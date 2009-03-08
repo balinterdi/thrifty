@@ -148,6 +148,7 @@ end
 
 get '/expenses/new' do
   @expenses = current_user.expenses
+  @tags = @expenses.map { |exp| exp.tags }.flatten.uniq
   haml :new_expense
 end
 
@@ -167,7 +168,9 @@ get '/get_expenses' do
 end
 
 post '/expenses' do
-  tags = (params[:expense].delete("tags")).split.map { |tag| Tag.first(:name => tag) }
+  tags = (params[:expense].delete("tags")).split.map do |tag|
+    Tag.first_or_create(:name => tag)
+  end
   expense = Expense.new(params[:expense].merge(:user => current_user))
   tags.each { |tag| expense.taggings.build(:tag_id => tag.id) }
   if expense.save

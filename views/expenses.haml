@@ -15,12 +15,13 @@
 
 %h1= "Expenses for #{current_user.name}"
 #tags
-  - @tags.each do |t|
-    .expense_tag{ :id => t.id }= t.name
-    %input{ :type => "hidden", :id => "selected-tag-#{t.id}", :value => "0" }
+  = partial :tag, :collection => @tags
 #expenses
   %ul#expenses-list
     / = partial :expense, :collection => @expenses
 #sum 
   #sum-text Total amount:
   #sum-amount 0
+  
+%div
+  %a{ :href => '/expenses/new' } New expense

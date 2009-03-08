@@ -3,6 +3,7 @@ class Expense
 
   property :id, Serial
   property :amount, Integer, :null => false
+  property :subject, String
 
   has n, :taggings
   has n, :tags, :through => :taggings

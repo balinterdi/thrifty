@@ -20,7 +20,7 @@ Group.fixture {{
 }}
 
 Tag.fixture {{
-  :name => /\w{3,7}/.gen
+  :name => /fun|food|travelling|clothes|house/.gen
 }}
 
 Tag.fixture(:food) {{
@@ -41,5 +41,6 @@ Tagging.fixture {{
 }}
 
 Expense.fixture {{
-  :amount => /(\d{2,5})/.gen
+  :amount => /(\d{2,5})/.gen,
+  :subject => /\w{3,7}/.gen
 }}
