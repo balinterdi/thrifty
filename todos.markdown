@@ -2,6 +2,7 @@
 
 ## Short-term
 
+* make bottom link shift more to the bottom
 * create timestamp for Expense (maybe as an after_save hook)
 * add the ability of fitering expenses between two dates on expenses page
 
