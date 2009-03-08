@@ -1,9 +1,13 @@
 :javascript
   $(document).ready(function() {
-    $("a.delete").click(function() {
-      $.delete_("/expenses/" + this.id, {}, function(data){
-        $("#"+data).parent().hide();
-      })
+    $(".expense_tag").click(function() {
+      var tags_so_far = $("#expense-tags").val().split(' ');
+      var new_tag = $(this).html();
+      if ( tags_so_far.indexOf(new_tag) == -1 ) {
+        tags_so_far.push(new_tag);
+        var new_tags = tags_so_far.join(' ').replace(/^\s+/, '').replace(/\s+$/, '');
+        $("#expense-tags").val(new_tags);
+      }
     });
   })
 
