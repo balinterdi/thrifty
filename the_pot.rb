@@ -202,8 +202,10 @@ end
 
 delete %r{/expenses/(.*)} do
   id = params[:captures].first
-  Expense.get(id).destroy
+  exp = Expense.get(id)
+  amount = exp.amount
+  exp.destroy
   # The return value of this method
   # will be returned to a caller
-  id
+  "#{id}:#{amount}"
 end
