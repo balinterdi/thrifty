@@ -1,5 +1,7 @@
 require "dm-sweatshop"
 
+first_names = %w[James Alicia Harvey Susan Scott Sarah Anne Steve Sofie Nancy]
+
 User.fixture {{
   :name => "James Duncan",
   :login => "login",
@@ -7,9 +9,9 @@ User.fixture {{
 }}
 
 User.fixture(:rand) {{
-  :login => (login = /\w{4,10}/.gen),
-  :name  => /\w{2,8} \w{2,8}/.gen,
-  :password => (password = /\w{6,10}/.gen),
+  :name  => (name = (first_names[rand(first_names.length)] + / \w{2,8}/.gen.capitalize)),
+  :login => (login = name.split(' ').first.downcase),
+  :password => login,
   :expenses => rand(12).of { Expense.make }
 }}
 

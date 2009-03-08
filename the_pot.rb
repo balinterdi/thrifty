@@ -98,7 +98,7 @@ post '/login' do
   auth = do_auth
   if auth
     flash[:ok] = "Welcome #{current_user.name}."
-    redirect '/events'
+    redirect '/expenses'
   else
     flash[:error] = "Incorrect user name or password. Try again."
     haml :login
