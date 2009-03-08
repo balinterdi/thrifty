@@ -1,5 +1,8 @@
 :javascript
   $(document).ready(function() {
+    $("a.delete").click(function() {
+      alert($(this).attr("id"));
+    });
     $('.expense_tag').click(function() {
       $(this).toggleClass('selected_tag');
       var selected_tags = Array();
@@ -9,6 +12,12 @@
         var expenses_html = data.substring(data.indexOf(':') + 1);
         $('#sum-amount').html(total_amount);
         $('#expenses-list').html(expenses_html);
+        // bind the onclick action to the newly inserted row
+        $("a.delete").bind("click", function() {
+          $.delete_("/expenses/" + this.id, {}, function(data){
+            $("a#"+data).parents("li.expense").hide();
+          })
+        });
       });
     });
   })
