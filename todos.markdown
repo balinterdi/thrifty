@@ -2,8 +2,8 @@
 
 ## Short-term
 
-* make labels on form (e.g new_expense.haml) be aligned with the input fields in their row
-* create timestamp for Expense (maybe as an after_save hook)
+* flash messages styling
+* make submit button nicer
 * add the ability of fitering expenses between two dates on expenses page
 
 * get rid of the Pot model
@@ -11,8 +11,12 @@
 
 ## Long-term
 
+* validation
+
 # DONE
 
+* create timestamp for Expense (maybe as an after_save hook)
+* make labels on form (e.g new_expense.haml) be aligned with the input fields in their row
 * make bottom link shift more to the bottom
 * make expenses list and total sum refresh after deleting an expense on expenses page
 * fix "delete" links on expenses page

@@ -29,6 +29,7 @@ label
 
 input
   :background #eee
+  :padding 1px 3px
   &:focus
     :background #fff
 
@@ -36,6 +37,8 @@ input
 !right_field_width = 240px
 !form_width = 400px
 
+/ margin-top 5px is a correction value so that the label
+/ aligns correctly with the input...
 form
   :border 0
   :padding 0
@@ -43,11 +46,12 @@ form
   ul.fieldset
     :list-style none
     :font-size 1.2em
-    :line-height 1.5em
+    :line-height 1.5
     :margin 0
     :padding 0
     li
-      :margin 0 0 .75em
+      :margin 0
+      :margin-bottom 0.75em
       :padding 0
       :clear both
       :width = !form_width
@@ -63,6 +67,7 @@ form
         :width = !right_field_width
         :float right
         :text-align left
+        :margin-top 5px
       .onlyRightColumn
         :margin-left = !left_field_width + 10
 

@@ -3,7 +3,16 @@ require File.dirname(__FILE__) + '/spec_helper'
 describe "Expense" do
   before do
     Expense.all.destroy!
-    @expenses = Expense.gen
+    @expense = Expense.gen
+  end
+
+  it "should be set the current time for spent_at if not given" do
+    @expense.spent_at.day.should == Date.today.day
+  end
+
+  it "should be set the passed date for spent_at" do
+    tomorrow = Date.today + 1
+    Expense.gen(:spent_at => tomorrow).spent_at.day.should == tomorrow.day
   end
 
   describe "tagging" do
