@@ -1,8 +1,15 @@
 / color-theme based on "Haunt" theme on kuler.adobe.com
+
+!theme_orange = #BF6321
+!theme_occer = #C7D99A
+!theme_white = #E8FFDE
+!theme_greyish = #7A8C87
+!theme_grey = #3D403C
+
 / form-layout design taken from http://www.slideshare.net/AaronGustafson/learning-to-love-forms-webvisions-07
 
 body
-  :background-color #3d403c
+  :background-color = !theme_grey
   :font
     :family Palatino, Lucida Grande, Verdana, sans-serif
     :size 20px
@@ -19,7 +26,7 @@ a
   :width 80%
   :padding 50px
   :color black
-  :background-color #e8ffde
+  :background-color = !theme_white
 
 #main_panel
 
@@ -57,7 +64,18 @@ form
       :width = !form_width
       input[type=submit]
         :cursor pointer
-        :margin-left = !left_field_width + 40
+        :margin-left = !left_field_width + 30
+        :border 2px outset #333
+        :width auto
+        :background #ffd100
+        :color black
+        :font
+          :size .6em
+          :weight bold
+        :padding .2em .5em
+        :letter-spacing .2em
+        :text-transform uppercase
+        
       .leftColumn
         :width = !left_field_width
         :float left
@@ -119,7 +137,7 @@ ul#expenses-list
 #tags
   :margin 10px 0px
 
-!tag_background = #bf6321
+!tag_background = !theme_orange
 
 div.expense_tag
   :display inline
