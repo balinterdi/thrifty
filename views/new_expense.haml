@@ -1,5 +1,9 @@
+%link{ :rel => "stylesheet", :href => "/stylesheets/jquery-ui/smoothness/jquery-ui-1.7.custom.css", :type => "text/css", :media => "screen" }
+%script{ :src => '/javascripts/jquery-ui-1.7.custom.min.js', :type => 'text/javascript' }
+
 :javascript
   $(document).ready(function() {
+    $("#expense-spent-at").datepicker({ firstDay : 1, showButtonPanel : true });
     $(".expense_tag").click(function() {
       var tags_so_far = $("#expense-tags").val().split(' ');
       var new_tag = $(this).html();
@@ -26,6 +30,9 @@
     %li.field
       .onlyRightColumn
         = partial :tag, :collection => @tags
+    %li.field
+      %label.leftColumn{ :for => 'expense-spent-on' } Spent on
+      %input.rightColumn{ :type => 'text', :id => 'expense-spent-at', :name => 'expense[spent_at]'}
     %li
       %input{ :type => 'submit', :name => 'add_expense', :value => "Add expense" }
 

@@ -2,9 +2,10 @@
 
 ## Short-term
 
+* add the ability of fitering expenses between two dates on expenses page
 * flash messages styling
 * make submit button nicer
-* add the ability of fitering expenses between two dates on expenses page
+
 
 * get rid of the Pot model
 * make a form builder for the commonly used form (ul-li-label-input)

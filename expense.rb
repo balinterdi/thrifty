@@ -4,7 +4,7 @@ class Expense
   property :id, Serial
   property :amount, Integer, :null => false
   property :subject, String
-  property :spent_at, DateTime
+  property :spent_at, Date
 
   has n, :taggings
   has n, :tags, :through => :taggings

@@ -168,6 +168,11 @@ get '/get_expenses' do
 end
 
 post '/expenses' do
+  if params[:expense]["spent_at"].strip.empty?
+    params[:expense]["spent_at"] = nil
+  else
+    params[:expense]["spent_at"] = Date.parse(params[:expense]["spent_at"].strip)
+  end
   tags = (params[:expense].delete("tags")).split.map do |tag|
     Tag.first_or_create(:name => tag)
   end
