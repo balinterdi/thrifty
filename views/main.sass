@@ -6,6 +6,8 @@
 !theme_greyish = #7A8C87
 !theme_grey = #3D403C
 
+!nice_yellow = #ffd100
+
 / form-layout design taken from http://www.slideshare.net/AaronGustafson/learning-to-love-forms-webvisions-07
 
 body
@@ -27,6 +29,29 @@ a
   :padding 50px
   :color black
   :background-color = !theme_white
+
+#flash
+  :padding 10px
+  :clear both
+  :float left
+  .ok
+    #icon
+      :width 0.9em
+      :background-color green
+      :float left
+      :margin 0px 5px
+    #message
+      :float left
+      :margin 0px 5px
+  .error
+    #icon
+      :width 20px
+      :background-color red
+      :float left
+      :margin 0px 5px
+    #message
+      :margin 0px 5px
+      :float left
 
 #main_panel
 
@@ -67,7 +92,7 @@ form
         :margin-left = !left_field_width + 30
         :border 2px outset #333
         :width auto
-        :background #ffd100
+        :background = !nice_yellow
         :color black
         :font
           :size .6em
@@ -75,7 +100,7 @@ form
         :padding .2em .5em
         :letter-spacing .2em
         :text-transform uppercase
-        
+
       .leftColumn
         :width = !left_field_width
         :float left

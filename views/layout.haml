@@ -12,9 +12,13 @@
     #container
       #flash
         - if flash[:ok]
-          .ok= flash[:ok]
+          .ok
+            #icon &nbsp
+            #message= flash[:ok]
         - if flash[:error]
-          .error= flash[:error]
+          .error
+            #icon &nbsp
+            #message= flash[:error]
       #main_panel
         = yield
 
