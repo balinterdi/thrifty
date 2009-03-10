@@ -6,6 +6,7 @@ User.fixture {{
   :name => "James Duncan",
   :login => "login",
   :password => "sickrat",
+  :password_confirmation => "sickrat"
 }}
 
 User.fixture(:rand) {{

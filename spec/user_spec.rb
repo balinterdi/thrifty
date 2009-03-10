@@ -15,8 +15,13 @@ describe "User" do
     @user = User.generate
   end
 
+  it "should correctly store the encrypted password" do
+    # puts "encrypted password: #{@user.encrypt(@user.password)}"
+    @user.encrypt(@user.password) == @user.encrypted_password
+  end
+
   it "should not be able to auth. with bad login" do
-    User.authenticate(@user.login, @user.password + "x").should == nil
+    User.authenticate(@user.login + "x", @user.password).should == nil
   end
   it "should not be able to auth. with bad password" do
     User.authenticate(@user.login, @user.password + "x").should == nil
@@ -24,10 +29,6 @@ describe "User" do
 
   it "should be able to authenticate with the correct credentials" do
     User.authenticate(@user.login, @user.password).should == @user
-  end
-
-  it "should retain the logged in group" do
-    pending
   end
 
   describe "tagging expenses" do
@@ -74,7 +75,7 @@ describe "User" do
         @exp1.taggings.create(:tag => food_tag)
         @exp1.taggings.create(:tag => travel_tag)
         @exp2.taggings.create(:tag => travel_tag)
-        
+
         user = User.gen
         user.expenses = [@exp1, @exp2, @exp3]
         @exps = user.get_expenses_with_tags([food_tag, travel_tag])
@@ -88,7 +89,7 @@ describe "User" do
       it "should not contain the expenses that are not tagged with any of the passed tags" do
         @exps.should_not include(@exp3)
       end
-      
+
       it "should not contain an expense that has multiple matching tags" do
         @exps.length.should == 2
       end

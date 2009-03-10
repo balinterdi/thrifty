@@ -1,16 +1,38 @@
 class User
   include DataMapper::Resource
 
+  attr_accessor :password, :password_confirmation
+
   property :id, Serial
   property :name, String, :null => false
   property :login, String, :min_length => 4
-  property :password, String, :min_length => 4
+  property :encrypted_password, String
+  property :salt, String
+
+  before :save, :encrypt_password
 
   belongs_to :group
   has n, :expenses
 
-  def self.authenticate(user, password)
-    self.first(:login => user, :password => password)
+  class << self
+    def encrypt(password, salt)
+      Digest::SHA1.hexdigest("#{password}+#{salt}")
+    end
+  end
+
+  def encrypt(password)
+    self.class.encrypt(password, salt)
+  end
+
+  def encrypt_password
+    return if password.blank?
+    self.salt = Digest::SHA1.hexdigest("#{Time.now.to_s}+login") if new_record?
+    self.encrypted_password = encrypt(password)
+  end
+
+  def self.authenticate(login, password)
+    user = User.first(:login => login)
+    user && user.encrypt(password) == user.encrypted_password ? user : nil
   end
 
   def sum_expenses_for_tag(tag)
