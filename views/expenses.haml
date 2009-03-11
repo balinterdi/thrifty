@@ -1,3 +1,6 @@
+%link{ :rel => "stylesheet", :href => "/stylesheets/jquery-ui/smoothness/jquery-ui-1.7.custom.css", :type => "text/css", :media => "screen" }
+%script{ :src => '/javascripts/jquery-ui-1.7.custom.min.js', :type => 'text/javascript' }
+
 :javascript
 
   function refreshExpensesListAndTotal(data) {
@@ -7,23 +10,28 @@
     $('#expenses-list').html(expenses_html);
   }
 
+  function bindOnclickOfDeleteLinks() {
+    $("a.delete").bind("click", function() {
+      $.delete_("/expenses/" + this.id, {}, function(data){
+        var expense_id = data.substring(0, data.indexOf(':'));
+        var expense_amount = data.substring(data.indexOf(':') + 1);
+        $("a#"+data).parents("li.expense").hide();
+        var old_total = $("#sum-amount").html();
+        $("#sum-amount").html(old_total - parseInt(expense_amount));
+      })
+    });
+  }
+
   $(document).ready(function() {
+    $("#spent-at-from").datepicker({ firstDay : 1, showButtonPanel : true });
+    $("#spent-at-to").datepicker({ firstDay : 1, showButtonPanel : true });
     $('.expense_tag').click(function() {
       $(this).toggleClass('selected_tag');
       var selected_tags = Array();
       $.each($('.selected_tag'), function() { selected_tags.push($(this).attr('id')); });
       $.get("/get_expenses", { "tags[]" : $.makeArray(selected_tags) }, function(data) {
         refreshExpensesListAndTotal(data);
-        // bind the onclick action to the newly inserted row
-        $("a.delete").bind("click", function() {
-          $.delete_("/expenses/" + this.id, {}, function(data){
-            var expense_id = data.substring(0, data.indexOf(':'));
-            var expense_amount = data.substring(data.indexOf(':') + 1);
-            $("a#"+data).parents("li.expense").hide();
-            var old_total = $("#sum-amount").html();
-            $("#sum-amount").html(old_total - parseInt(expense_amount));
-          })
-        });
+        bindOnclickOfDeleteLinks();
       });
     });
   })
@@ -31,6 +39,10 @@
 %h1= "Expenses for #{current_user.name}"
 #tags
   = partial :tag, :collection => @tags
+#dates
+  Between
+  %input#spent-at-from
+  %input#spent-at-to
 #expenses
   %ul#expenses-list
     / = partial :expense, :collection => @expenses

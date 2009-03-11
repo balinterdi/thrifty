@@ -1,6 +1,7 @@
 %li.expense
   %div.amount= expense.amount
   %div.subject= expense.subject
+  %div.spent_at= expense.spent_at.to_s
   %div.links
     %a{ :href => "/expenses/#{expense.id}/edit" } Edit
     %a.delete{ :href => "#", :id => expense.id } Delete

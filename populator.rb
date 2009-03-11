@@ -2,11 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'spec', 'spec_fixture
 
 class Populator
   def self.populate!
-    # have unique-named tags
-    10.times do
-      tag = Tag.gen
-      Tag.get(tag.id).destroy if Tag.all(:name => tag.name).length > 1
-    end
+    %w(fun food travelling clothes house).each { |name| Tag.gen(:name => name) }
     # generating users fixtures will also generate expenses
     users = 5.of { User.gen(:rand) }
     taggings = 30.of { Tagging.gen }

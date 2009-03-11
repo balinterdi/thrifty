@@ -9,10 +9,13 @@ User.fixture {{
   :password_confirmation => "sickrat"
 }}
 
+# make makes a new Expense object but does not save it
+# (uses _new_ internally)
 User.fixture(:rand) {{
   :name  => (name = (first_names[rand(first_names.length)] + / \w{2,8}/.gen.capitalize)),
   :login => (login = name.split(' ').first.downcase),
   :password => login,
+  :password_confirmation => "sickrat",
   :expenses => rand(12).of { Expense.make }
 }}
 
@@ -45,5 +48,6 @@ Tagging.fixture {{
 
 Expense.fixture {{
   :amount => /(\d{2,5})/.gen,
-  :subject => /\w{3,7}/.gen
+  :subject => /\w{3,7}/.gen,
+  :spent_at => Date.today.send(rand(2).zero? ? :+ : :-, rand(60))
 }}

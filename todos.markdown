@@ -5,6 +5,7 @@
 * add the ability of fitering expenses between two dates on expenses page
 * add README
 * get rid of the Pot model
+* rename app to "SpendThrift" ??
 * make a form builder for the commonly used form (ul-li-label-input)
 
 ## Long-term
