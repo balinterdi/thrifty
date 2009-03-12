@@ -24,10 +24,11 @@ class Expense
   end
 
   def spent_before?(date)
-    !date || self.spent_at < date
+    !date || self.spent_at <= date
   end
 
   def spent_after?(date)
-    !date || self.spent_at > date
+    puts "Is #{self.spent_at} after #{date} ?"
+    !date || self.spent_at >= date
   end
 end

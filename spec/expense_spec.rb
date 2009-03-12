@@ -60,6 +60,10 @@ describe "Expense" do
         @expense.should be_spent_after(nil)
       end
 
+      it "should return true if spent on the same date as the passed one" do
+        @expense.should be_spent_after(Date.today - 3)
+      end
+
       it "should return true if spent sooner than the passed date" do
         @expense.should be_spent_after(Date.today - 4)
       end
@@ -73,6 +77,10 @@ describe "Expense" do
     describe "before" do
       it "should return true if no date is passed" do
         @expense.should be_spent_before(nil)
+      end
+
+      it "should return true if spent on the same date as the passed one" do
+        @expense.should be_spent_before(Date.today - 3)
       end
 
       it "should return true if spent sooner than the passed date" do
