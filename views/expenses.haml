@@ -53,9 +53,15 @@
 #tags
   = partial :tag, :collection => @tags
 #dates
-  Between
-  %input.expense_date#spent-at-from
-  %input.expense_date#spent-at-to
+  #from
+    #from-label From
+    #from-input
+      %input.expense_date#spent-at-from
+  #to
+    #to-label To
+    #to-input
+      %input.expense_date#spent-at-to
+    
 #expenses
   %ul#expenses-list
     / = partial :expense, :collection => @expenses

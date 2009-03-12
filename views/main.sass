@@ -8,6 +8,16 @@
 
 !nice_yellow = #ffd100
 
+=nice-aligned-inline-left
+  :display inline
+  :float left
+  :text-align left
+
+=nice-aligned-inline-right
+  :display inline
+  :float right
+  :text-align right
+
 / form-layout design taken from http://www.slideshare.net/AaronGustafson/learning-to-love-forms-webvisions-07
 
 body
@@ -119,16 +129,29 @@ div#expenses
   :margin 50px 0px
   / :padding 20px 0px
 
-=nice-aligned-inline-left
-  :display inline
-  :float left
-  :text-align left
-
-=nice-aligned-inline-right
-  :display inline
-  :float right
-  :text-align right
-
+#dates
+  :clear both
+  :margin 20px 0px
+  :width 50%
+  #from
+    +nice-aligned-inline-left
+    :width 45%
+  #to
+    +nice-aligned-inline-right
+    :width 45%
+  #from-label
+    +nice-aligned-inline-left
+    :display inline
+  #from-input
+    +nice-aligned-inline-right
+    :display inline
+  #to-label
+    +nice-aligned-inline-left
+    :display inline
+  #to-input
+    +nice-aligned-inline-right
+    :display inline
+    
 ul#expenses-list
   :list-style-type none
   li

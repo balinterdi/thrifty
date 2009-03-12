@@ -2,7 +2,7 @@
 
 ## Short-term
 
-* add the ability of fitering expenses between two dates on expenses page
+* revisit layout of the expenses page (Total amount is too close to the date filters)
 * add README
 * get rid of the Pot model
 * rename app to "SpendThrift" ??
@@ -14,6 +14,7 @@
 
 # DONE
 
+* add the ability of fitering expenses between two dates on expenses page
 * flash messages styling
 * salting user password and not storing the password itself
 * make submit button nicer
