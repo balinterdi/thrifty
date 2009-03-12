@@ -16,7 +16,7 @@ User.fixture(:rand) {{
   :login => (login = name.split(' ').first.downcase),
   :password => login,
   :password_confirmation => "sickrat",
-  :expenses => rand(12).of { Expense.make }
+  :expenses => rand(12).of { Expense.make(:rand) }
 }}
 
 Group.fixture {{
@@ -47,6 +47,11 @@ Tagging.fixture {{
 }}
 
 Expense.fixture {{
+  :amount => /(\d{2,5})/.gen,
+  :subject => /\w{3,7}/.gen,
+}}
+
+Expense.fixture(:rand) {{
   :amount => /(\d{2,5})/.gen,
   :subject => /\w{3,7}/.gen,
   :spent_at => Date.today.send(rand(2).zero? ? :+ : :-, rand(60))

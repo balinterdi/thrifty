@@ -96,6 +96,35 @@ describe "User" do
 
     end # with multiple tagged
 
+  end # tagging expenses
+
+  describe "finding expenses by dates" do
+    before do
+      @exp_1 = Expense.gen(:spent_at => Date.today - 7)
+      @exp_2 = Expense.gen(:spent_at => Date.today - 4)
+      @user.expenses = [@exp_1, @exp_2]
+    end
+
+    it "should return all the expenses if no dates are given" do
+      @user.get_expenses_between_dates.should include(@exp_1)
+      @user.get_expenses_between_dates.should include(@exp_2)
+    end
+
+    it "should return the expenses spent later than a from date" do
+      @user.get_expenses_between_dates(Date.today - 5).should include(@exp_2)
+      @user.get_expenses_between_dates(Date.today - 5).should_not include(@exp_1)
+    end
+
+    it "should return the expenses spent sooner than a to date" do
+      @user.get_expenses_between_dates(nil, Date.today - 5).should include(@exp_1)
+      @user.get_expenses_between_dates(nil, Date.today - 5).should_not include(@exp_2)
+    end
+
+    it "should return the expenses spent later than a from date and sooner than a to date" do
+      expenses = @user.get_expenses_between_dates(Date.today - 8, Date.today - 2)
+      expenses.should include(@exp_1)
+      expenses.should include(@exp_2)
+    end
 
   end
 

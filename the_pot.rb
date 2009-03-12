@@ -160,9 +160,15 @@ end
 
 get '/get_expenses' do
   # content_type :json
-  # puts "selected tags:  #{params["tags"].inspect}"
   tag_ids = (params["tags"] || []).map { |t| t.to_i }
   expenses = current_user.get_expenses_with_tags(tag_ids)
+  unless params["dates"].nil?
+    from_date, to_date = params["dates"].map do |date|
+      date.empty? ? nil : Date.parse(date)
+    end
+    expenses_between_dates = current_user.get_expenses_between_dates(from_date, to_date)
+    expenses = expenses.select { |exp| expenses_between_dates.include?(exp) }
+  end
   total_amount = expenses.inject(0) { |sum, exp| sum + exp.amount }
   total_amount.to_s + ":" + ( partial :expense, :collection => expenses )
 end

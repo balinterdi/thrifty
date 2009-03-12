@@ -6,7 +6,7 @@ describe "Expense" do
     @expense = Expense.gen
   end
 
-  it "should be set the current time for spent_at if not given" do
+  it "should be set to the current date for spent_at if not given" do
     @expense.spent_at.day.should == Date.today.day
   end
 
@@ -49,5 +49,42 @@ describe "Expense" do
     end
 
   end # tagging
+
+  describe "spent at dates" do
+    before do
+      @expense.spent_at = Date.today - 3
+    end
+
+    describe "after" do
+      it "should return true if no date is passed" do
+        @expense.should be_spent_after(nil)
+      end
+
+      it "should return true if spent sooner than the passed date" do
+        @expense.should be_spent_after(Date.today - 4)
+      end
+
+      it "should return false if spent later than the passed date" do
+        @expense.should_not be_spent_after(Date.today - 2)
+      end
+
+    end
+
+    describe "before" do
+      it "should return true if no date is passed" do
+        @expense.should be_spent_before(nil)
+      end
+
+      it "should return true if spent sooner than the passed date" do
+        @expense.should be_spent_before(Date.today - 2)
+      end
+
+      it "should return false if spent later than the passed date" do
+        @expense.should_not be_spent_before(Date.today - 4)
+      end
+
+    end
+
+  end # spent at dates
 
 end

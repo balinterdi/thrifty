@@ -43,9 +43,14 @@ class User
   end
 
   def get_expenses_with_tags(tags)
-    # this should be elegant like this, but it does not work
     expenses.select do |exp|
       exp.tagged_with?(*tags)
+    end
+  end
+
+  def get_expenses_between_dates(from=nil, to=nil)
+    expenses.select do |exp|
+      exp.spent_before?(to) && exp.spent_after?(from)
     end
   end
 

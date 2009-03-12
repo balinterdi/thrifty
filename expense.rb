@@ -23,4 +23,11 @@ class Expense
     tag_ids.any? { |tag_id| !taggings.select { |tagging| tagging.tag_id == tag_id }.empty? }
   end
 
+  def spent_before?(date)
+    !date || self.spent_at < date
+  end
+
+  def spent_after?(date)
+    !date || self.spent_at > date
+  end
 end
