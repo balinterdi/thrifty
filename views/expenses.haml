@@ -41,8 +41,9 @@
 
     $('.expense_tag').click(function() {
       $(this).toggleClass('selected_tag');
+      var selected_dates = [$('#spent-at-from').val(), $('#spent-at-to').val()];
       var selected_tags = getSelectedTags();
-      $.get("/get_expenses", { "tags[]" : $.makeArray(selected_tags) }, function(data) {
+      $.get("/get_expenses", { "tags[]" : $.makeArray(selected_tags), "dates[]" : $.makeArray(selected_dates) }, function(data) {
         refreshExpensesListAndTotal(data);
         bindOnclickOfDeleteLinks();
       });
