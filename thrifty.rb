@@ -22,6 +22,12 @@ configure :development do
   DataMapper.setup(:default, :adapter => 'sqlite3', :database => 'db/development.sqlite3')
 end
 
+configure :production do
+  set :mode, 'production'
+  enable :sessions
+  DataMapper.setup(:default, :adapter => 'sqlite3', :database => 'db/production.sqlite3')
+end
+
 # mime :json, "application/json"
 
 helpers do
