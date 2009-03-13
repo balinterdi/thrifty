@@ -1,0 +1,2 @@
+dm-core --version '>= 0.9.9'
+dm-validations --version '>= 0.9.9'
