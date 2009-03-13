@@ -42,7 +42,7 @@ Tag.fixture(:travelling) {{
 }}
 
 Tagging.fixture {{
-  :expense => Expense.pick,
+  :expense => Expense.pick(:rand),
   :tag => Tag.pick
 }}
 

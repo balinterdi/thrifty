@@ -1,4 +1,4 @@
-require "the_pot"
+require "thrifty"
 require "populator"
 
 namespace :db do
