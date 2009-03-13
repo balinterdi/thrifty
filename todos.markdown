@@ -4,8 +4,6 @@
 
 * revisit layout of the expenses page (Total amount is too close to the date filters)
 * add README
-* get rid of the Pot model
-* rename app to "SpendThrift" ??
 * make a form builder for the commonly used form (ul-li-label-input)
 
 ## Long-term
@@ -14,6 +12,8 @@
 
 # DONE
 
+* get rid of the Pot model
+* rename app to "thrifty"
 * add the ability of fitering expenses between two dates on expenses page
 * flash messages styling
 * salting user password and not storing the password itself
