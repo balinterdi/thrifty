@@ -59,10 +59,24 @@ helpers do
     User.get(session["user"])
   end
 
+  def logged_in?
+    !!current_user
+  end
+
+  def redirect_if_not_logged_in
+    redirect '/login' unless logged_in?
+  end
+
 end
+
+ACCESSIBLE_BY_ANON = %w(/register /login /logout /) unless defined?(ACCESSIBLE_BY_ANON)
 
 before do
   @flash = reset_flash
+  request_path = request.env["REQUEST_PATH"]
+  unless request_path =~ /(\.css|\.js|\.ico)$/ or ACCESSIBLE_BY_ANON.include?(request_path)
+    redirect_if_not_logged_in
+  end
 end
 
 get '/main.css' do
@@ -117,7 +131,7 @@ get '/logout' do
 end
 
 get '/' do
-  haml :dashboard
+  redirect '/expenses'
 end
 
 get '/events' do
