@@ -8,13 +8,11 @@
 
 !nice_yellow = #ffd100
 
-=nice-aligned-inline-left
-  :display inline
+=float-align-left
   :float left
   :text-align left
 
-=nice-aligned-inline-right
-  :display inline
+=float-align-right
   :float right
   :text-align right
 
@@ -42,8 +40,8 @@ a
 
 #flash
   :padding 10px
-  :clear both
   :float left
+  :clear both
   .ok
     #icon
       :width 0.9em
@@ -124,60 +122,50 @@ form
         :margin-top 5px
       .onlyRightColumn
         :margin-left = !left_field_width
-        :float right
-        :text-align left
-        :margin-top 5px
 
 div#expenses
   :margin 50px 0px
   / :padding 20px 0px
 
 #dates
-  :clear both
   :margin 20px 0px
   :width = 55%
   #from
-    +nice-aligned-inline-left
+    +float-align-left
     :width 45%
   #to
-    :display inline
     :float right
     :width 45%
   #from-label
-    +nice-aligned-inline-left
-    :display inline
+    +float-align-left
     :margin-right 10px
   #from-input
-    :display inline
   #to-label
-    +nice-aligned-inline-left
+    +float-align-left
     :margin-right 10px
     :text-align right
-    :display inline
   #to-input
-    :display inline
-    
+
 ul#expenses-list
   :list-style-type none
   li
     :clear both
     :width 500px
     .amount
-      +nice-aligned-inline-left
+      +float-align-left
       :width 20%
       :color red
     .subject
-      +nice-aligned-inline-left
+      +float-align-left
       :width 20%
     .spent_at
-      +nice-aligned-inline-left
+      +float-align-left
       :width 20%
     .links
-      +nice-aligned-inline-right
+      +float-align-right
       :width 40%
 
 #sum
-  :clear both
   :width 200px
   :margin
     :top 20px
@@ -185,10 +173,10 @@ ul#expenses-list
     :left 0
     :right 0
   #sum-text
-    +nice-aligned-inline-left
-    :width 80%
+    +float-align-left
+    :width 70%
   #sum-amount
-    +nice-aligned-inline-right
+    +float-align-right
     :width 20%
 
 #tags
