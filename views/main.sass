@@ -135,24 +135,26 @@ div#expenses
 #dates
   :clear both
   :margin 20px 0px
-  :width 50%
+  :width = 55%
   #from
     +nice-aligned-inline-left
     :width 45%
   #to
-    +nice-aligned-inline-right
+    :display inline
+    :float right
     :width 45%
   #from-label
     +nice-aligned-inline-left
     :display inline
+    :margin-right 10px
   #from-input
-    +nice-aligned-inline-right
     :display inline
   #to-label
     +nice-aligned-inline-left
+    :margin-right 10px
+    :text-align right
     :display inline
   #to-input
-    +nice-aligned-inline-right
     :display inline
     
 ul#expenses-list
