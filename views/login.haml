@@ -1,12 +1,12 @@
 %form{ :name => "login", :method => "post", :action => "/login" }
-  %ul{ :class => "fieldset" }
-    %li{ :class => "field" }
-      %label{ :for => "login" } Login
-      %input{ :type => "text", :id => "login", :name => "login" }
-    %li{ :class => "field" }
-      %label{ :for => "password" } Password
-      %input{ :type => "password", :id => "password", :name => "password" }
-    %li{ :class => "field" }
+  %ul.fieldset
+    %li.field
+      %label.leftColumn{ :for => "login" } Login
+      %input.rightColumn{ :type => "text", :id => "login", :name => "login" }
+    %li.field{ :class => "field" }
+      %label.leftColumn{ :for => "password" } Password
+      %input.rightColumn{ :type => "password", :id => "password", :name => "password" }
+    %li.field{ :class => "field" }
       %input{ :type => "submit", :value => "Log in"}
       
 %a{ :href => "/register" } Register

@@ -101,7 +101,7 @@ post '/register' do
     if user
       current_user = user
       flash[:ok] = "The new user has been created."
-      redirect '/'
+      redirect '/login'
     else
       flash[:error] = "Bad data. Registration failed. Try again."
       haml :register

@@ -5,7 +5,6 @@
 * revisit layout of the expenses page (Total amount is too close to the date filters)
 * check layout of the date selectors on expensese page in Safari (looks ugly now)
 * add README
-* make layout of the login and register pages nice
 * make a form builder for the commonly used form (ul-li-label-input)
 
 ## Long-term
@@ -14,6 +13,7 @@
 
 # DONE
 
+* make layout of the login and register pages nice
 * correct the '/' action (gives error on 'name')
 * get rid of the Pot model
 * rename app to "thrifty"

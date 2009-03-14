@@ -1,17 +1,17 @@
 %form{ :name => "register", :action => "/register", :method => "post" }
-  %ul{ :class => "fieldset" }
-    %li{ :class => "field" }
-      %label{ :for => "name" } Name
-      %input{ :type => "text", :id => "name", :name => "user[name]" }
-    %li{ :class => "field" }
-      %label{ :for => "login" } Login
-      %input{ :type => "text", :id => "login", :name => "user[login]" }
-    %li{ :class => "field" }
-      %label{ :for => "password" } Password
-      %input{ :type => "password", :id => "password", :name => "user[password]" }
-    %li{ :class => "field" }
-      %label{ :for => "re-password" } Re-password
-      %input{ :type => "password", :id => "re-password", :name => "user[re_password]" }
+  %ul.fieldset
+    %li.field
+      %label.leftColumn{ :for => "name" } Name
+      %input.rightColumn{ :type => "text", :id => "name", :name => "user[name]" }
+    %li.field
+      %label.leftColumn{ :for => "login" } Login
+      %input.rightColumn{ :type => "text", :id => "login", :name => "user[login]" }
+    %li.field
+      %label.leftColumn{ :for => "password" } Password
+      %input.rightColumn{ :type => "password", :id => "password", :name => "user[password]" }
+    %li.field
+      %label.leftColumn{ :for => "re-password" } Re-password
+      %input.rightColumn{ :type => "password", :id => "re-password", :name => "user[re_password]" }
 
-    %li{ :class => "field" }
+    %li.field
       %input{ :type => "submit", :value => "Register"}
