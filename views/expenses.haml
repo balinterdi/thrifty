@@ -61,10 +61,13 @@
     #to-label To
     #to-input
       %input.expense_date#spent-at-to
+  #pusher
 
 #expenses
   %ul#expenses-list
     / = partial :expense, :collection => @expenses
+  #pusher
+
 #sum
   #sum-text Total amount:
   #sum-amount 0

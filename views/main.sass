@@ -179,6 +179,16 @@ ul#expenses-list
     +float-align-right
     :width 20%
 
+// This is a CSS hack.
+// "Since a float is not in the flow, non-positioned block boxes created aft. and bef. the float box flow vert.lly as if the float didn't exist."
+// As a consequence, vertical margins are only taken into account
+// between two block elements which do not float.
+// So the below "pusher" needs to be added as a child to all divs
+// where margin-top should be respected.
+
+#pusher
+  :clear both
+
 #tags
   :margin 10px 0px
 
