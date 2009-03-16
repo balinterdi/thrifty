@@ -3,6 +3,7 @@
 ## Short-term
 
 * add README
+* display the user name which is converted to a navbar (including the logout button) when clicked.
 * make everything UTF-8 encoded
 * make a form builder for the commonly used form (ul-li-label-input)
 
