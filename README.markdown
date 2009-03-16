@@ -27,7 +27,7 @@ If you'd like to recreate the database tables and populate them, you can run:
 
 ## On the test server
 
-If you would like a test ride without bothering with installing gems, head over to [thrify.heroku.com](http://thrifty.heroku.com). Please let me know if it is not available there.
+If you would like a test ride without bothering with installing gems, head over to [thrify.heroku.com](http://thrifty.heroku.com). Please let me know if it is not available there. Please note that I can not assume any responsibility for the safety, integrity or secrecy of your data stored on this test server.
 
 # Further development
 
