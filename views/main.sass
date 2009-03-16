@@ -149,25 +149,29 @@ div#expenses
     :margin-right 10px
     :text-align right
   #to-input
+  #dates-buttons
+    +float-align-right
+    :margin-left 5px
 
 ul#expenses-list
   :list-style-type none
   li
     :clear both
-    :width 500px
+    :width 600px
     .amount
       +float-align-left
       :width 20%
       :color red
     .subject
       +float-align-left
-      :width 20%
+      :width 40%
+      :overflow hidden
     .spent_at
       +float-align-left
       :width 20%
     .links
       +float-align-right
-      :width 40%
+      :width 20%
 
 #sum
   :width 200px

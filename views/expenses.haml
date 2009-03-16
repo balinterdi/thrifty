@@ -39,6 +39,11 @@
 
   $(document).ready(function() {
     $(".expense_date").datepicker({ firstDay : 1, showButtonPanel : true });
+    $("#delete-dates").click(function(){
+      $.each($(".expense_date"), function() {
+        $(this).val('');
+      })
+    })
     $(".expense_date").change(function() {
       updateExpenseList();
     });
@@ -61,6 +66,9 @@
     #to-label To
     #to-input
       %input.expense_date#spent-at-to
+  #dates-buttons
+    #delete-dates
+      %button#delete-dates{ :type => "button" } Delete
 
 #expenses
   %ul#expenses-list

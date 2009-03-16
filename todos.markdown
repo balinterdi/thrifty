@@ -2,9 +2,10 @@
 
 ## Short-term
 
-* revisit layout of the expenses page (Total amount is too close to the date filters)
-* check layout of the date selectors on expensese page in Safari (looks ugly now)
+* fix layout when subject of expense is too long
+* buttons to delete dates and to select all tags/none
 * add README
+* make everything UTF-8 encoded
 * make a form builder for the commonly used form (ul-li-label-input)
 
 ## Long-term
@@ -13,6 +14,8 @@
 
 # DONE
 
+* revisit layout of the expenses page (Total amount is too close to the date filters)
+* check layout of the date selectors on expensese page in Safari (looks ugly now)
 * make layout of the login and register pages nice
 * correct the '/' action (gives error on 'name')
 * get rid of the Pot model
