@@ -2,7 +2,6 @@
 
 ## Short-term
 
-* buttons to delete dates and to select all tags/none
 * add README
 * make everything UTF-8 encoded
 * make a form builder for the commonly used form (ul-li-label-input)
@@ -13,6 +12,7 @@
 
 # DONE
 
+* buttons to delete dates and to select all tags/none
 * fix layout when subject of expense is too long
 * revisit layout of the expenses page (Total amount is too close to the date filters)
 * check layout of the date selectors on expensese page in Safari (looks ugly now)
