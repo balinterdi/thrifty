@@ -51,11 +51,25 @@
       $(this).toggleClass('selected_tag');
       updateExpenseList();
     });
+
+    $('#all-tags-button').click(function(){
+      $('.expense_tag').addClass('selected_tag');
+      updateExpenseList();
+    });
+
+    $('#none-tags-button').click(function(){
+      $('.expense_tag').removeClass('selected_tag');
+      updateExpenseList();
+    });
+
   })
 
 %h1= "Expenses for #{current_user.name}"
 #tags
   = partial :tag, :collection => @tags
+  #tags-buttons
+    %button#all-tags-button All
+    %button#none-tags-button None
 #dates
   #from
     #from-label From
