@@ -1,10 +1,16 @@
-# About
+# Thrifty
+
+## About
 
 Thrifty is a simple "two-page" application written in [Sinatra][1] to keep track of your spending. After a quick registration you can start adding your expenses. You can add tags for each expense and optionally set a date the money was spent.
 
 On the other page of the app you can filter your expenses by selecting the tags you provided when creating the expenses. You can also narrow down your results by providing a date range.
 
-## Running it on your machine
+***
+
+## Running it
+
+### On your machine
 
 You will need to install the following gems to run Thrifty on your machine:
 
@@ -25,15 +31,19 @@ If you'd like to recreate the database tables and populate them, you can run:
 
     rake db:dev:reinit
 
-## On the test server
+### On the test server
 
 If you would like a test ride without bothering with installing gems, head over to [thrify.heroku.com](http://thrifty.heroku.com). Please let me know if it is not available there. Please note that I can not assume any responsibility for the safety, integrity or secrecy of your data stored on this test server.
 
-# Further development
+***
 
-There are still some outstanding issues that I would like to address. Perhaps the major one is adding validations. Also, I am planning to add UTF-8 support so non-English speakers can add/tag their spending in their mother tongue.
+## Further development
 
-# Release notes
+This is a very early beta so there are definitely some outstanding issues that I would like to address. Perhaps the major one is adding validations. Also, I am planning to add UTF-8 support so non-English speakers can add/tag their spending in their mother tongue.
+
+***
+
+## Release notes
 
 The code is released under the MIT license so please feel free and even encouraged to fork away! Also, if you have suggestions or comments, just let me know.
 
