@@ -23,22 +23,22 @@
 %form{ :name => "create_expense", :method => "post", :action => "/expenses"}
   %ul.fieldset
     %li.field
-      %label.leftColumn{ :for => 'expense-subject' } Subject
+      %label.leftColumn{ :for => 'expense-subject' } What did you buy?
       %input.rightColumn{ :type => 'text', :id => 'expense-subject', :name => 'expense[subject]'}
     %li.field
-      %label.leftColumn{ :for => 'expense-amount' } Amount
+      %label.leftColumn{ :for => 'expense-amount' } For how much?
       %input.rightColumn{ :type => 'text', :id => 'expense-amount', :name => 'expense[amount]'}
     %li.field
-      %label.leftColumn{ :for => 'expense-tags' } Tags
+      %label.leftColumn{ :for => 'expense-tags' } Tags (space separated)
       %input.rightColumn{ :type => 'text', :id => 'expense-tags', :name => 'expense[tags]'}
     %li.field
-      .onlyRightColumn
+      .extendedRightColumn
         = partial :tag, :collection => @tags
     %li.field
-      %label.leftColumn{ :for => 'expense-spent-on' } Spent on
+      %label.leftColumn{ :for => 'expense-spent-on' } When did you buy it? (defaults to today)
       %input.rightColumn{ :type => 'text', :id => 'expense-spent-at', :name => 'expense[spent_at]'}
-      %button#delete-date-button{ :type => "button" } Delete
+      %button#delete-date-button{ :type => "button" } Clear date
     %li
       %input{ :type => 'submit', :name => 'add_expense', :value => "Add expense" }
 
-%a{ :href => "/expenses" } Go to expenses
+%a{ :href => "/expenses" } See your expenses
