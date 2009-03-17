@@ -22,14 +22,18 @@ You will need to install the following gems to run Thrifty on your machine:
 Before the first run you'll need to create the sqlite database and the tables the app uses. I provided a rake task to do this, so you simply need to do:
 
     rake db:dev:automigrate
-  
+
 If you'd like your database to be populated with some semi-random data so you don't need to create user and spending instances manually, you can do:
 
     rake db:dev:populate
-  
+
 If you'd like to recreate the database tables and populate them, you can run:
 
     rake db:dev:reinit
+
+Once all the things are in place, you can launch the app simply be typing:
+
+    ruby thrifty.rb
 
 ### On the test server
 
