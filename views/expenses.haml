@@ -12,6 +12,7 @@
   function refreshExpensesListAndTotal(data) {
     var total_amount = data.substring(0, data.indexOf(':'));
     var expenses_html = data.substring(data.indexOf(':') + 1);
+    expenses_html.length > 0 ? $("#no-expenses").hide() : $("#no-expenses").show();
     $('#sum-amount').html(total_amount);
     $('#expenses-list').html(expenses_html);
   }
@@ -84,6 +85,9 @@
       %input.expense_date#spent-at-to
 
 #expenses
+  #no-expenses
+    No expenses match the search criteria. Make the search criteria less strict or 
+    %a{ :href => '/expenses/new' } add some expenses.
   %ul#expenses-list
     / = partial :expense, :collection => @expenses
 

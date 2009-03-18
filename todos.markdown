@@ -2,8 +2,8 @@
 
 ## Short-term
 
-* add README
-* display the user name which is converted to a navbar (including the logout button) when clicked.
+* don't display all/none buttons when there are no tags
+* show all expenses by default and only show tagged ones when tags are selected
 * make everything UTF-8 encoded
 * make a form builder for the commonly used form (ul-li-label-input)
 
@@ -13,10 +13,13 @@
 
 # DONE
 
+* display helper text when there are no expenses (and/or tags) on the expenses page
+* add README
+* display the user name which is converted to a navbar (including the logout button) when clicked.
 * buttons to delete dates and to select all tags/none
 * fix layout when subject of expense is too long
 * revisit layout of the expenses page (Total amount is too close to the date filters)
-* check layout of the date selectors on expensese page in Safari (looks ugly now)
+* check layout of the date selectors on expenses page in Safari (looks ugly now)
 * make layout of the login and register pages nice
 * correct the '/' action (gives error on 'name')
 * get rid of the Pot model
