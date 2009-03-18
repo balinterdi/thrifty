@@ -63,6 +63,8 @@
       updateExpenseList();
     });
 
+    updateExpenseList();
+
   })
 
 %h1 Expenses
@@ -87,10 +89,10 @@
 
 #expenses
   #no-expenses
-    No expenses match the search criteria. Make the search criteria less strict or 
+    No expenses match the search criteria. Make the search criteria less strict or
     %a{ :href => '/expenses/new' } add some expenses.
   %ul#expenses-list
-    / = partial :expense, :collection => @expenses
+    = partial :expense, :collection => @expenses
 
 #sum
   #sum-text Total amount:

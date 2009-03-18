@@ -24,6 +24,10 @@ describe "Expense" do
       @exp.taggings.create(:tag => @food_tag)
     end
 
+    it "should return true when no tag is passed" do
+      @exp.tagged_with? == true
+    end
+
     it "should return true when asked if it has a certain tag it is tagged with" do
       @exp.tagged_with?(@food_tag).should == true
     end

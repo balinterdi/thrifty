@@ -2,7 +2,6 @@
 
 ## Short-term
 
-* show all expenses by default and only show tagged ones when tags are selected
 * log in user after registration
 
 ## Long-term
@@ -13,6 +12,7 @@
 
 # DONE
 
+* show all expenses by default and only show tagged ones when tags are selected
 * don't display all/none buttons when there are no tags
 * display helper text when there are no expenses (and/or tags) on the expenses page
 * add README
