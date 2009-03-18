@@ -66,11 +66,12 @@
   })
 
 %h1 Expenses
-#tags
-  = partial :tag, :collection => @tags
-  #tags-buttons
-    %button#all-tags-button All
-    %button#none-tags-button None
+- if @tags.length > 0
+  #tags
+    = partial :tag, :collection => @tags
+    #tags-buttons
+      %button#all-tags-button All
+      %button#none-tags-button None
 #dates
   #from
     #from-label From

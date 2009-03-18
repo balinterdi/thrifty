@@ -2,17 +2,18 @@
 
 ## Short-term
 
-* don't display all/none buttons when there are no tags
 * show all expenses by default and only show tagged ones when tags are selected
-* make everything UTF-8 encoded
-* make a form builder for the commonly used form (ul-li-label-input)
+* log in user after registration
 
 ## Long-term
 
 * validation
+* make everything UTF-8 encoded
+* make a form builder for the commonly used form (ul-li-label-input)
 
 # DONE
 
+* don't display all/none buttons when there are no tags
 * display helper text when there are no expenses (and/or tags) on the expenses page
 * add README
 * display the user name which is converted to a navbar (including the logout button) when clicked.
